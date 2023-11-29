@@ -15,7 +15,7 @@ export default function Dashboard() {
             <Link
               to={item.url}
               style={{
-                backgroundColor: item.bgColor,
+                //backgroundColor: item.bgColor,
                 color: item.color,
               }}
             >
@@ -30,33 +30,18 @@ export default function Dashboard() {
 
 const allItems = [
   {
-    title: 'Orders',
+    title: 'Đơn hàng',
     imageUrl: '/icons/orders.svg',
     url: '/orders',
     bgColor: '#ec407a',
     color: 'white',
   },
   {
-    title: 'Profile',
+    title: 'Hồ sơ',
     imageUrl: '/icons/profile.svg',
     url: '/profile',
     bgColor: '#1565c0',
     color: 'white',
   },
-  {
-    title: 'Users',
-    imageUrl: '/icons/users.svg',
-    url: '/admin/users',
-    forAdmin: true,
-    bgColor: '#00bfa5',
-    color: 'white',
-  },
-  {
-    title: 'Foods',
-    imageUrl: '/icons/foods.svg',
-    url: '/admin/foods',
-    forAdmin: true,
-    bgColor: '#e040fb',
-    color: 'white',
-  },
+  
 ];
