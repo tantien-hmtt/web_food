@@ -23,12 +23,12 @@ export default function ProfilePage() {
   return (
     <div className={classes.container}>
       <div className={classes.details}>
-        <Title title="Update Profile" />
+        <Title title="Cập nhật thông tin" />
         <form onSubmit={handleSubmit(submit)}>
           <Input
             defaultValue={user.name}
             type="text"
-            label="Name"
+            label="Khách hàng"
             {...register('name', {
               required: true,
               minLength: 5,
@@ -38,7 +38,7 @@ export default function ProfilePage() {
           <Input
             defaultValue={user.address}
             type="text"
-            label="Address"
+            label="Địa chỉ"
             {...register('address', {
               required: true,
               minLength: 10,
@@ -46,7 +46,7 @@ export default function ProfilePage() {
             error={errors.address}
           />
 
-          <Button type="submit" text="Update" backgroundColor="#009e84" />
+          <Button type="submit" text="Cập nhật" backgroundColor="#009e84" />
         </form>
 
         <ChangePassword />

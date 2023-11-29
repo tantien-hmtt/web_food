@@ -81,7 +81,7 @@ export default function OrdersPage() {
             </div>
             <div className={classes.footer}>
               <div>
-                <Link to={`/track/${order.id}`}>Show Order</Link>
+                <Link to={`/track/${order.id}`}>Kiểm tra đơn hàng</Link>
               </div>
               <div>
                 <span className={classes.price}>
