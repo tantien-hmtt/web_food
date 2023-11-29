@@ -15,8 +15,7 @@ export default function PaypalButtons({ order }) {
     <PayPalScriptProvider
       options={{
         clientId:
-        // id specific for each account paypal : này là của hmtt
-          'AXLunfHd1CtGcBEiOp62zAoiJjStao98lJiZhzrXuOp6CP5QMK3dGKPDdQrW4hmyFUXb0HxdDe-JsVme',
+          'AUWcnaHjOUoXVI3IjLpMkM0Kk0Sigq1CUAWP-finHI950yQD2Qni8XPkRbs76Q-_JIT8hJFhKD8YVy3u',
       }}
     >
       <Buttons order={order} />
@@ -51,7 +50,7 @@ function Buttons({ order }) {
       const payment = await actions.order.capture();
       const orderId = await pay(payment.id);
       clearCart();
-      toast.success('Payment Saved Successfully', 'Success');
+      toast.success('Thanh toán thành công rồi nè :>', 'Success');
       navigate('/track/' + orderId);
     } catch (error) {
       toast.error('Payment Save Failed', 'Error');
@@ -59,7 +58,7 @@ function Buttons({ order }) {
   };
 
   const onError = err => {
-    toast.error('Payment Failed', 'Error');
+    toast.error('Thanh toán thât bại, thử lại bạn nhé :<', 'Error');
   };
 
   return (

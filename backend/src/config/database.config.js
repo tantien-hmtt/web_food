@@ -10,11 +10,11 @@ set('strictQuery', true);
 
 export const dbconnect = async () => {
   try {
-    await connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-       useUnifiedTopology: true,
-     });
-    //await mongoose.connect(process.env.MONGO_URI);
+    // connect(process.env.MONGO_URI, {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    // });
+    await mongoose.connect(process.env.MONGO_URI);
     await seedUsers();
     await seedFoods();
     console.log('connect successfully---');
