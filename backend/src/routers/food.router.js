@@ -43,15 +43,27 @@ router.get(
     })
   );
 
-router.get('/search/:searchTerm', 
-    handler(async (req, res) => {
-    const  { searchTerm } = req.params; 
-    const  searchRegex = new RegExp(searchTerm, 'i');
-    const  foods = FoodModel.filter( item => 
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
-        ); 
-    res.send(foods)
-})); 
+// router.get('/search/:searchTerm', 
+//     handler(async (req, res) => {
+//     const  { searchTerm } = req.params; 
+//     const  searchRegex = new RegExp(searchTerm, 'i');
+//     const  foods = await FoodModel.filter( item => 
+//         item.name.toLowerCase().includes(searchTerm.toLowerCase())
+//         ); 
+//     res.send(foods)
+// })); 
+
+router.get(
+  '/search/:searchTerm',
+  handler(async (req, res) => {
+    const { searchTerm } = req.params;
+    const searchRegex = new RegExp(searchTerm, 'i');
+
+    const foods = await FoodModel.find({ name: { $regex: searchRegex } });
+    res.send(foods);
+  })
+);
+
 
 router.get('/tag/:tag', 
     handler(async (req,res) => {
