@@ -34,7 +34,7 @@ export default function RegisterPage() {
   return (
     <div className={classes.container}>
       <div className={classes.details}>
-        <Title title="Register" />
+        <Title title="Đăng ký thành viên" />
         <form onSubmit={handleSubmit(submit)} noValidate>
           <Input
             type="text"
@@ -84,12 +84,12 @@ export default function RegisterPage() {
 
           <Input
             type="text"
-            label="Address"
-            {...register('address', {
+            label="phone"
+            {...register('phone', {
               required: true,
               minLength: 10,
             })}
-            error={errors.address}
+            error={errors.phone}
           />
 
           <Button type="submit" text="Register" />
