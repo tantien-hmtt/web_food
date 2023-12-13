@@ -35,15 +35,16 @@ export default function ProfilePage() {
             })}
             error={errors.name}
           />
+          
           <Input
-            defaultValue={user.address}
+            defaultValue={user.phone}
             type="text"
             label="Địa chỉ"
-            {...register('address', {
+            {...register('phone', {
               required: true,
               minLength: 10,
             })}
-            error={errors.address}
+            error={errors.phone}
           />
 
           <Button type="submit" text="Cập nhật" backgroundColor="#009e84" />

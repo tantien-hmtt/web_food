@@ -24,8 +24,9 @@ router.post ('/login', handler( async  (req,res) => {
 })); 
 
 router.post('/register', handler( async (req,res) => {
-    const {name, email, password, address } = req.body; 
-    const user = await UserModel.findOne({email})
+    const { username ,name, email, password, address } = req.body; 
+    //{ }
+    const user = await UserModel.findOne({$or: [{ email }, { username }] })
     if ( user) {
         res.status(BAD_REQUEST).send("User already exits, login"); 
         return ; 
@@ -33,6 +34,7 @@ router.post('/register', handler( async (req,res) => {
 
     const hashpass = await bcrypt.hash(password,PASSWORD_HASH_SALT_ROUNDS) ; 
     const newuser = {
+        username,
         name, 
         email: email,
         password: hashpass, 
@@ -62,31 +64,7 @@ router.put(
     })
   );
   
-  router.put(
-    '/changePassword',
-    auth,
-    handler(async (req, res) => {
-      const { currentPassword, newPassword } = req.body;
-      const user = await UserModel.findById(req.user.id);
-  
-      if (!user) {
-        res.status(BAD_REQUEST).send('Change Password Failed!');
-        return;
-      }
-  
-      const equal = await bcrypt.compare(currentPassword, user.password);
-  
-      if (!equal) {
-        res.status(BAD_REQUEST).send('Current Password Is Not Correct!');
-        return;
-      }
-  
-      user.password = await bcrypt.hash(newPassword, PASSWORD_HASH_SALT_ROUNDS);
-      await user.save();
-  
-      res.send();
-    })
-  );
+ 
 
 const generateTokenResponse = user => {
     const token = jwt.sign(

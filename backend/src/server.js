@@ -1,10 +1,8 @@
 import express from 'express'
 import cors from 'cors'; 
-import foodRouter from './routers/food.router.js'
 import userRouter from './routers/user.router.js'
 import dotenv from 'dotenv'
 import { dbconnect } from './config/database.config.js';
-import oderRouter from './routers/order.router.js'
 import {fileURLToPath} from 'url';
 import path, { dirname } from 'path';
 dotenv.config();
@@ -24,11 +22,8 @@ app.use(
     )
 )
 
-app.use('/api/foods', foodRouter); 
 
 app.use('/api/users', userRouter); 
-
-app.use('/api/orders', oderRouter);
 
 const publicFolder = path.join(__dirname,'public');
 app.use(express.static(publicFolder));

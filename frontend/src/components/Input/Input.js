@@ -11,9 +11,9 @@ function Input(
     //defaults
     switch (error.type) {
       case 'required':
-        return 'Sao bạn lại bỏ trống :< , điền đi';
+        return 'Chưa điền';
       case 'minLength':
-        return 'Dài thêm xíu nữa đi';
+        return 'quá ngắn';
       default:
         return '*';
     }

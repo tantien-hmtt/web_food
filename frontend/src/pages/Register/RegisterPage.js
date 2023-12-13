@@ -36,6 +36,16 @@ export default function RegisterPage() {
       <div className={classes.details}>
         <Title title="Đăng ký thành viên" />
         <form onSubmit={handleSubmit(submit)} noValidate>
+        <Input
+            type="text"
+            label="UserName"
+            {...register('username', {
+              required: true,
+              minLength: 5,
+            })}
+            error={errors.name}
+          />
+
           <Input
             type="text"
             label="Name"
@@ -87,7 +97,7 @@ export default function RegisterPage() {
             label="phone"
             {...register('phone', {
               required: true,
-              minLength: 10,
+              maxLength: 10, 
             })}
             error={errors.phone}
           />
